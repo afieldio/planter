@@ -4,7 +4,7 @@ from PIL import Image
 plants = ['plant1.png', 'plant2.png', 'plant3.png']
 
 for p in plants:
-    im = Image.open(p)
+    im = Image.open("original/{}".format(p))
     px = im.load()
     xmax = im.size[0]
     ymax = im.size[1]
@@ -24,6 +24,6 @@ for p in plants:
                 if green > (red + threshold) and green > (blue + threshold):
                     count += 1
                     px[a,b] = (253, 0, 193, 255)
-    im.save("out_{}".format(p))
+    im.save("output/out_{}".format(p))
     percent = float(count/total_px)*100
     print "percentage of green pixels in {0} is {1}".format(p,percent)
